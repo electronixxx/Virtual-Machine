@@ -1,0 +1,105 @@
+||| Worked by Hernest Serani (MATRICOLA: 877028) Copyright © |||
+||| Ca' Foscari, Academic Year 2018 - 2019 |||
+||| Course: PROGRAMMAZIONE E LABORATORIO [CT0442] |||
+
+Compile with:
+			gcc -g3 -fsanitize=address -fsanitize=undefined -std=gnu89 -pedantic-errors -Wall -Wextra project1 aux.c instructions.c main.c stampa.c esegui.c
+
+DEBUG Exit codes:
+Exit Code 0 -> Application has run successfully.
+Exit Code 1 -> File does not exist in the current working directory.
+Exit Code 2 -> Wrong command.
+Exit Code 3 -> Not enough parameters.
+Exit Code 4 -> Instruction file is missing.
+Exit Code 5 -> Unknown Instruction.
+Exit Code 6 -> Machine Code file is blank.
+Exit Code 7 -> Memory Allocation problem.
+
+Commands supported: 
+	"esegui"
+	"stampa"
+	
+*To print all instructions: ./VM stampa file.cvm
+*To execute all instructions: ./VM esegui file.cvm
+
+Project files:
+
+**C FILES**
+main.c		-> Contains the main procedure which calls the two main functions of the program, esegui or stampa.
+aux.c		-> Contains the auxilliary functions fro my program.
+stampa.c	-> Function that prints the list of instructions from the machine code file.
+esegui.c 	-> Function that executes the list of instructions fro thefile with machine code.
+instructions.c 	-> Contains all the instruction procedures of the program.
+settings.h	-> Contains all declarations of variables, strcutures and function prototypes.
+
+**TEXT FILES**
+instructions.txt-> Contains all available instructions and their opcodes, length, ID, parameters.
+logs.txt	-> Log of executed machine code.
+
+**MACHINE CODE FILES**
+somma.cvm	-> Virtual Machine Code that calculates the sum of first n numbers.
+fibonacci.cvm	-> Prints the fibonacci serie of first n numbers.
+blank.cvm	-> Blank file for test purposes.
+factorial.cvm	-> Calculates the factorial of a number and printd it.
+
+
+
+Executed Example:
+
+ --stampa-- (factorial) :
+
++-------------------------------+
+|   ID   | OPCODE     |P1  |P2  |
++-------------------------------+
+|->     0| MOV         R0   5
+|->     3| CALL        8   
+|->     5| DISPLAY     R30  
+|->     7| HALT        
+|->     8| MOV         R1   2
+|->    11| MOV         R20  1
+|->    14| MOV         R30  1
+|->    17| SUB         R0   R1
+|->    20| JNEG        34  
+|->    22| MUL         R30  R1
+|->    25| POP         R30  
+|->    27| ADD         R1   R20
+|->    30| POP         R1   
+|->    32| JMP         17  
+|->    34| RET         
++-------------------------------+
+
+
+
+ --esegui-- (factorial) :
+
++========================================================+
+|                 EXECUTED MACHINE CODE                  |
++========================================================+
+REG[30]= 120
+END OF EXECUTION.
++========================================================+
+
+
+
++========================================================+
+|                 VIRTUAL MACHINE LOGS                   |
++========================================================+
+|Executed on: Fri Jun  7 13:53:39                        |
+|INSTRUCTION COUNT (IC): 38                              |
+|EXE_TIME:      46.00 nanoseconds                        |
+|CPU FREQUENCY:    2.50000 Ghz                           |
+|CPI BRANCH: 2 ns                                        |
+|CPI PRINT: 3 ns                                         |
+|CPI DATA TRANSFER: 3 ns                                 |
+|CPI ARITHMETIC: 4 ns                                    |
+|CPI AVERAGE: 3.026 ns                                   |
++========================================================+
+|Branch Instructions Executed: 12    (31.58 %)           |
++--------------------------------------------------------+
+|Print Instructions Executed: 1     (02.63 %)            |
++--------------------------------------------------------+
+|Data Transfer Instructions Executed: 12    (31.58 %)    |
++--------------------------------------------------------+
+|Arithmetic Instructions Executed: 13    (34.21 %)       |
++========================================================+
+
