@@ -16,6 +16,10 @@ void HALT () {
 }
 
 void DISPLAY (int id) {
+  if (!(id>=0 && id<NR_REGISTERS)) { /* If register does not exist, temrinates the program */
+    printf("Register R%d does not exist in program. Exiting...\n", id);
+    HALT ();
+  }
   printf("REG[%d]= %d\n",id, REG[id]);
 }
 
@@ -35,6 +39,10 @@ void PRINT_STACK (int n) {
 }
 
 void PUSH (int id) {
+  if (!(id>=0 && id<NR_REGISTERS)) { /* If register does not exist, temrinates the program */
+    printf("Register R%d does not exist in program. Exiting...\n", id);
+    HALT ();
+  }
   if (SP <= STACK_MAX_SIZE/4) {
     STACK[SP] = REG[id];
     SP++;
@@ -46,6 +54,10 @@ void PUSH (int id) {
 }
 
 void POP (int id) {
+  if (!(id>=0 && id<NR_REGISTERS)) { /* If register does not exist, temrinates the program */
+    printf("Register R%d does not exist in program. Exiting...\n", id);
+    HALT ();
+  }
   if (SP > 0) {
     SP--;
     REG[id] = STACK[SP];
@@ -57,6 +69,10 @@ void POP (int id) {
 }
 
 void MOV (int id, int value) {
+  if (!(id>=0 && id<NR_REGISTERS)) { /* If register does not exist, temrinates the program */
+    printf("Register R%d does not exist in program. Exiting...\n", id);
+    HALT ();
+  }
   REG[id] = value;
 }
 
@@ -113,6 +129,14 @@ void JNEG (int value) {
 }
 
 void ADD (int id_1, int id_2) {
+  if (!(id_1>=0 && id_1<NR_REGISTERS)) { /* If register does not exist, temrinates the program */
+    printf("Register R%d does not exist in program. Exiting...\n", id_1);
+    HALT ();
+  }
+  if (!(id_2>=0 && id_2<NR_REGISTERS)) { /* If register does not exist, temrinates the program */
+    printf("Register R%d does not exist in program. Exiting...\n", id_2);
+    HALT ();
+  }
   if (SP <= STACK_MAX_SIZE/4) {
     int a = REG [id_1];
     int b = REG [id_2];
@@ -138,6 +162,14 @@ void ADD (int id_1, int id_2) {
 }
 
 void SUB (int id_1, int id_2) {
+  if (!(id_1>=0 && id_1<NR_REGISTERS)) { /* If register does not exist, temrinates the program */
+    printf("Register R%d does not exist in program. Exiting...\n", id_1);
+    HALT ();
+  }
+  if (!(id_2>=0 && id_2<NR_REGISTERS)) { /* If register does not exist, temrinates the program */
+    printf("Register R%d does not exist in program. Exiting...\n", id_2);
+    HALT ();
+  }
   if (SP <= STACK_MAX_SIZE/4) {
     int a = REG [id_1];
     int b = REG [id_2];
@@ -163,6 +195,14 @@ void SUB (int id_1, int id_2) {
 }
 
 void MUL (int id_1, int id_2) {
+  if (!(id_1>=0 && id_1<NR_REGISTERS)) { /* If register does not exist, temrinates the program */
+    printf("Register R%d does not exist in program. Exiting...\n", id_1);
+    HALT ();
+  }
+  if (!(id_2>=0 && id_2<NR_REGISTERS)) { /* If register does not exist, temrinates the program */
+    printf("Register R%d does not exist in program. Exiting...\n", id_2);
+    HALT ();
+  }
   if (SP <= STACK_MAX_SIZE/4) {
     int a = REG [id_1];
     int b = REG [id_2];
@@ -184,6 +224,14 @@ void MUL (int id_1, int id_2) {
 }
 
 void DIV (int id_1, int id_2) {
+  if (!(id_1>=0 && id_1<NR_REGISTERS)) { /* If register does not exist, temrinates the program */
+    printf("Register R%d does not exist in program. Exiting...\n", id_1);
+    HALT ();
+  }
+  if (!(id_2>=0 && id_2<NR_REGISTERS)) { /* If register does not exist, temrinates the program */
+    printf("Register R%d does not exist in program. Exiting...\n", id_2);
+    HALT ();
+  }
   if (SP <= STACK_MAX_SIZE/4) {
     int a = REG [id_1];
     int b = REG [id_2];
