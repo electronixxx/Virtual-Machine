@@ -43,7 +43,7 @@ void PUSH (int id) {
     printf("Register R%d does not exist in program. Exiting...\n", id);
     HALT ();
   }
-  if (SP <= STACK_MAX_SIZE/4) {
+  if (SP <= STACK_MAX_SIZE/sizeof(int)) {
     STACK[SP] = REG[id];
     SP++;
   }
@@ -78,7 +78,7 @@ void MOV (int id, int value) {
 
 void CALL (int position) {
   IP = IP + length_from_op (CODE[IP]);
-  if (SP <= STACK_MAX_SIZE/4) {
+  if (SP <= STACK_MAX_SIZE/sizeof(int)) {
     STACK[SP] = IP;
     SP++;
   }
@@ -137,7 +137,7 @@ void ADD (int id_1, int id_2) {
     printf("Register R%d does not exist in program. Exiting...\n", id_2);
     HALT ();
   }
-  if (SP <= STACK_MAX_SIZE/4) {
+  if (SP <= STACK_MAX_SIZE/sizeof(int)) {
     int a = REG [id_1];
     int b = REG [id_2];
     int sum;
@@ -170,7 +170,7 @@ void SUB (int id_1, int id_2) {
     printf("Register R%d does not exist in program. Exiting...\n", id_2);
     HALT ();
   }
-  if (SP <= STACK_MAX_SIZE/4) {
+  if (SP <= STACK_MAX_SIZE/sizeof(int)) {
     int a = REG [id_1];
     int b = REG [id_2];
     int dif;
@@ -203,7 +203,7 @@ void MUL (int id_1, int id_2) {
     printf("Register R%d does not exist in program. Exiting...\n", id_2);
     HALT ();
   }
-  if (SP <= STACK_MAX_SIZE/4) {
+  if (SP <= STACK_MAX_SIZE/sizeof(int)) {
     int a = REG [id_1];
     int b = REG [id_2];
     int product;
@@ -232,7 +232,7 @@ void DIV (int id_1, int id_2) {
     printf("Register R%d does not exist in program. Exiting...\n", id_2);
     HALT ();
   }
-  if (SP <= STACK_MAX_SIZE/4) {
+  if (SP <= STACK_MAX_SIZE/sizeof(int)) {
     int a = REG [id_1];
     int b = REG [id_2];
     int div;

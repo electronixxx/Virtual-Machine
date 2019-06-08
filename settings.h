@@ -2,7 +2,7 @@
    Group Name: P1G83 */
 
 #define MAX_LENGTH_OF_INSTRUCTION 20 /* Maximum length of an instruction name */
-#define STACK_MAX_SIZE 65536 /*64 KB (64 * 2^10)*/
+#define STACK_MAX_SIZE 64000 /*64 KB */
 #define NR_INSTRUCTIONS 16  /*Number of available instructions */
 #define NR_REGISTERS 32 /*Number of register of the Virtual Machine */
 
