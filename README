@@ -41,6 +41,8 @@ somma.cvm	-> Virtual Machine Code that calculates the sum of first n numbers.
 fibonacci.cvm	-> Prints the fibonacci serie of first n numbers.
 blank.cvm	-> Blank file for test purposes.
 factorial.cvm	-> Calculates the factorial of a number and printd it.
+sumsquare.cvm	-> Finds the sum offirst n^2 numbers.
+overflow_test.cvm	->simple overflow test.
 
 
 
